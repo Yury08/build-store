@@ -1,0 +1,69 @@
+
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+   <script src="https://kit.fontawesome.com/62b48361cd.js" crossorigin="anonymous"></script>
+   <title>{% block title %}{{ title }}{% endblock %}</title>
+</head>
+<body>
+
+<header class="header" id="header">
+      <div class="container">
+          <div class="header__inner">
+              <div class="header__logo">
+                  <a href="{% url 'home' %}" class="header__btn-3">ГОРИЗОНТ</a>
+              </div>
+
+              <div class="buttons">
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'profile' %}" class="header__btn-2">Профиль</a>
+                  <a href="{% url 'exit' %}" class="header__btn-2">Выйти</a>
+                  {% else %}
+                  <a href="{% url 'reg' %}" class="header__btn-1">Зарегистрироваться</a>
+                  <a href="{% url 'user' %}" class="header__btn-2">Войти</a>
+                  {% endif %}
+              </div>
+
+
+              <nav id="nav" class="nav">
+
+                  <a class="nav__link" href="#" data-scroll="#intro">Главная</a>
+
+                  <a class="nav__link" href="#" data-scroll="#about">О нас</a>
+
+                  <a class="nav__link" data-scroll="#catalog" href="/catalog/">Каталог</a>
+
+                  <a class="nav__link" href="#" data-scroll="#contacti">Контакты</a>
+
+                   <a class="market" href="/cart/cart/">
+                      <i class="fa-solid fa-cart-shopping"></i>
+                  </a>
+              </nav>
+
+              <div class="nav-toggle" id="nav_toggle">
+                  <span id="nav_toggle" class="nav-toggle__item"></span>
+              </div>
+
+
+
+          </div>
+      </div>
+  </header>
+
+    {% block main %}
+
+    {% endblock %}
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="{% static 'js/slick.min.js' %}"></script>
+   <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>
